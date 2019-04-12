@@ -15,9 +15,12 @@
                 <td> ID </td>
                 <td> Nome </td>
                 <td> Descrição </td>
+                <td> Tamanho </td>
                 <td> Valor </td>
                 <td> Quantidade </td>
-                <td> Ações </td>
+                <td><i class="fas fa-search"></i></td>
+                <td><i class="fas fa-edit"></i></td>
+                <td> <i class="fas fa-trash-alt"></i></td>
             </thead>
             <tbody>
                 @foreach( $produtos as $p )
@@ -26,21 +29,23 @@
                         <td> {{$p->id }} </td>
                         <td> {{$p->nome }} </td>
                         <td> {{ $p->descricao }} </td>
+                        <td> {{ $p->tamanho }} </td>
                         <td> {{ $p->valor }} </td>
                         <td> {{ $p->quantidade }} </td>
                         <td>
                              <a href="/produtos/mostra/{{$p->id}}">
                                  <i class="fas fa-search"></i>
                             </a>
-                            |
-                            <a href="/produtos">
+                        </td>
+                        <td>
+                            <a href="/produtos/alterar/{{$p->id}}">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            |
+                        </td>
+                        <td>
                             <a href="/produtos/remove/{{$p->id}}">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
-
                         </td>
                     </tr>
 

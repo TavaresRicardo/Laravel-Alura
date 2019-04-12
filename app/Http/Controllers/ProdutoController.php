@@ -5,6 +5,8 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use estoque\Http\Resquests;
+use Validator;
+use estoque\Http\Requests\ProdutoRequest;
 
 class ProdutoController extends Controller {
 
@@ -21,6 +23,11 @@ class ProdutoController extends Controller {
         return view ('produto.detalhes', compact('p'));
     }
 
+    public function alterar($id){
+        $p = Produtos::find($id);
+        return view ('produto.alterar', compact('p'));
+    }
+
     public function remove($id){
         $p = Produtos::find($id);
         $p->delete();
@@ -35,7 +42,25 @@ class ProdutoController extends Controller {
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function adiciona(Request $request){
+    public function adiciona(ProdutoRequest $request){
+
+//        $regras = [
+//            'nomeproduto' => 'required',
+//            'valor' => 'required',
+//            'descricao' => 'required',
+//            'tamanho' => 'required',
+//            'quantidade' => 'required',
+//        ];
+//        $mensagens = [
+//            'nomeproduto.required' => 'O nome é obrigatório.',
+//            'valor.required' => 'O valor é obrigatório.',
+//            'descricao.required' => 'A descriço é obrigatória.',
+//            'tamanho.required' => 'O tamanho é obrigatório.',
+//            'quantidade.required' => 'A quantidade é obrigatória.',
+//        ];
+//        //dd($mensagens);
+//        $request->validate($regras, $mensagens);
+
 
 
         $produto = new Produtos();
@@ -43,6 +68,7 @@ class ProdutoController extends Controller {
         $produto->nome = $request->nomeproduto;
         $produto->valor = $request->valor;
         $produto->quantidade = $request->quantidade;
+        $produto->tamanho = $request->tamanho;
         $produto->descricao = $request->descricao;
         //salvando no BD
         $produto->save();
@@ -57,6 +83,25 @@ class ProdutoController extends Controller {
         //return view('produto.adicionado')->with('nome', $produto->nome);
 
         return redirect()->action('ProdutoController@lista')->withInput();
+    }
+
+    public function update(ProdutoRequest $request, $id){
+        $produto = Produtos::find($id);
+
+        if( isset($produto) ) {
+            //pegando as informações do formulario
+            $produto->nome = $request->nomeproduto;
+            $produto->valor = $request->valor;
+            $produto->quantidade = $request->quantidade;
+            $produto->tamanho = $request->tamanho;
+            $produto->descricao = $request->descricao;
+            //salvando no BD
+            $produto->save();
+            return redirect()->action('ProdutoController@lista')->withInput();
+        }
+        else{
+            return redirect()->action('ProdutoController@lista');
+        }
     }
 
     public function listaJson(){

@@ -21,7 +21,8 @@ class Produtos extends Model {
         'nome',
         'valor',
         'descricao',
-        'quantidade'
+        'quantidade',
+        'tamanho'
     ];
 
 
@@ -32,6 +33,8 @@ class Produtos extends Model {
     ];
 
     protected $dateFormat = 'd-m-Y H:i';
+
+    protected $guarded = ['id'];
 
 //    Para desativar as informações de tempo:
 //    public $timestamps = false;
