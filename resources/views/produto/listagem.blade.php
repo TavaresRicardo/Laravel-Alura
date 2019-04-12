@@ -30,12 +30,14 @@
                         <td> {{ $p->quantidade }} </td>
                         <td>
                              <a href="/produtos/mostra/{{$p->id}}">
-
                                  <i class="fas fa-search"></i>
                             </a>
                             |
+                            <a href="/produtos">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            |
                             <a href="/produtos/remove/{{$p->id}}">
-
                                 <i class="fas fa-trash-alt"></i>
                             </a>
 
@@ -48,11 +50,11 @@
         </table>
 
     @endif
-{{--    <h4>--}}
-{{--      <span class="label label-danger pull-right">--}}
-{{--        Um ou menos itens no estoque--}}
-{{--      </span>--}}
-{{--    </h4>--}}
+    <h4>
+      <span class="label label-danger pull-right">
+        Um ou menos itens no estoque
+      </span>
+    </h4>
     @if(old('nomeproduto'))
         <div class="alert alert-success">
             <strong>Sucesso!</strong> O produto {{ old('nomeproduto') }} foi adicionado.
