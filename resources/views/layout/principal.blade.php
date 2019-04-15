@@ -20,16 +20,38 @@
             </div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="{{action('ProdutoController@lista')}}">
-                        <i class="fas fa-list"></i> Listagem
-                    </a>
-                </li>
-                <li>
-                    <a href="{{action('ProdutoController@novo')}}">
-                        <i class="fas fa-plus"></i> Novo
-                    </a>
-                </li>
+
+                @if (Auth::guest())
+                    <li>
+                        <a href="/login">
+                            <i class="fas fa-sign-in-alt"></i> Entrar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/registrar">
+                            <i class="fas fa-registered"></i> Registrar
+                        </a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{action('ProdutoController@lista')}}">
+                            <i class="fas fa-list"></i> Listagem
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{action('ProdutoController@novo')}}">
+                            <i class="fas fa-plus"></i> Novo
+                        </a>
+                    </li>
+                    <li>
+{{--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>--}}
+
+{{--                        <a href="/logout" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-sign-out-alt"></i> {{ Auth::user()->name }} <span class="caret"></span></a>--}}
+                        <a href='/logout'>
+                            <i class="fas fa-sign-out-alt"></i> {{ Auth::user()->name }}
+                        </a>
+                    </li>
+                 @endif
             </ul>
 
         </div>

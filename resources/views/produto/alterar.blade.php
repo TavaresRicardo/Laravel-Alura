@@ -8,7 +8,7 @@
             @csrf
             <div class="form-group">
                 <label> Nome </label>
-                <input name="nomeproduto" value="{{ $p->nome }}" class="form-control"/>
+                <input name="nome" value="{{ $p->nome }}" class="form-control"/>
             </div>
             <div class="form-group">
                 <label> Valor </label>

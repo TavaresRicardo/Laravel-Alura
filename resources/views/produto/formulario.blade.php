@@ -8,16 +8,16 @@
             @csrf
             <div class="form-group">
                 <label> Nome </label>
-                <input name="nomeproduto" class="form-control  {{ $errors->has('nomeproduto') ? 'is-invalid' : '' }}"/>
-                @if( $errors->has('nomeproduto'))
+                <input name="nome" class="form-control  {{ $errors->has('nome') ? 'is-invalid' : '' }}" value="{{ old('nome') }}"/>
+                @if( $errors->has('nome'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('nomeproduto') }}
+                        {{ $errors->first('nome') }}
                     </div>
                 @endif
             </div>
             <div class="form-group">
                 <label> Valor </label>
-                <input name="valor" class="form-control  {{ $errors->has('valor') ? 'is-invalid' : '' }}"/>
+                <input name="valor" class="form-control  {{ $errors->has('valor') ? 'is-invalid' : '' }}" value="{{ old('valor') }}"/>
                 @if( $errors->has('valor'))
                     <div class="invalid-feedback">
                         {{ $errors->first('valor') }}
@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label> Quantidade </label>
-                <input name="quantidade" class="form-control  {{ $errors->has('quantidade') ? 'is-invalid' : '' }}"/>
+                <input name="quantidade" class="form-control  {{ $errors->has('quantidade') ? 'is-invalid' : '' }}" value="{{ old('quantidade') }}"/>
                 @if( $errors->has('quantidade'))
                     <div class="invalid-feedback">
                         {{ $errors->first('quantidade') }}
@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label> Tamanho </label>
-                <input name="tamanho" class="form-control  {{ $errors->has('tamanho') ? 'is-invalid' : '' }}"/>
+                <input name="tamanho" class="form-control  {{ $errors->has('tamanho') ? 'is-invalid' : '' }}" value="{{ old('tamanho') }}"/>
                 @if( $errors->has('tamanho'))
                     <div class="invalid-feedback">
                         {{ $errors->first('tamanho') }}
@@ -44,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label> Descrição </label>
-                <input name="descricao" class="form-control  {{ $errors->has('descricao') ? 'is-invalid' : '' }}"/>
+                <input name="descricao" class="form-control  {{ $errors->has('descricao') ? 'is-invalid' : '' }}" value="{{ old('descricao') }}"/>
                 @if( $errors->has('descricao'))
                     <div class="invalid-feedback">
                         {{ $errors->first('descricao') }}

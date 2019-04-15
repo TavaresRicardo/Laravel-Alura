@@ -2,38 +2,51 @@
 
 namespace estoque\Http\Controllers\Auth;
 
-use estoque\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Routing\Controller;
+
+//use estoque\Http\Controllers\Controller;
+//use Illuminate\Foundation\Auth\AuthenticatesUsers;
+//use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
+//use Request;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
 
-    use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
+    //use AuthenticatesUsers;
+
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function form(){
+        return view('login.form_login');
+    }
+
+    public function login(Request $request){
+        //credenciais
+        $credenciais = $request->only('email', 'password');
+        //login
+        if( Auth::attempt($credenciais) ){
+            //return 'Usuário está logado!';
+            return redirect('/produtos');
+        }
+        return 'Usuário não existe!';
+
+        //retornar alguma view
+    }
+    public function logout(){
+        if( Auth::check() ){
+            Auth::logout();
+            //return 'Usuário está deslogado!';
+            return redirect('/produtos');
+        }
     }
 }

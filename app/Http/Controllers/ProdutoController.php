@@ -7,11 +7,11 @@ use Illuminate\Foundation\Http\FormRequest;
 use estoque\Http\Resquests;
 use Validator;
 use estoque\Http\Requests\ProdutoRequest;
+use Auth;
 
 class ProdutoController extends Controller {
 
     public function lista(){
-
         $produtos = Produtos::all();
         return view('produto.listagem')->withProdutos($produtos);
         //return view('listagem')->with('produtos', array());
@@ -44,39 +44,18 @@ class ProdutoController extends Controller {
      */
     public function adiciona(ProdutoRequest $request){
 
-//        $regras = [
-//            'nomeproduto' => 'required',
-//            'valor' => 'required',
-//            'descricao' => 'required',
-//            'tamanho' => 'required',
-//            'quantidade' => 'required',
-//        ];
-//        $mensagens = [
-//            'nomeproduto.required' => 'O nome é obrigatório.',
-//            'valor.required' => 'O valor é obrigatório.',
-//            'descricao.required' => 'A descriço é obrigatória.',
-//            'tamanho.required' => 'O tamanho é obrigatório.',
-//            'quantidade.required' => 'A quantidade é obrigatória.',
-//        ];
-//        //dd($mensagens);
-//        $request->validate($regras, $mensagens);
 
-
-
-        $produto = new Produtos();
-        //pegando as informações do formulario
-        $produto->nome = $request->nomeproduto;
-        $produto->valor = $request->valor;
-        $produto->quantidade = $request->quantidade;
-        $produto->tamanho = $request->tamanho;
-        $produto->descricao = $request->descricao;
-        //salvando no BD
-        $produto->save();
-
-//        $params = Request::all();
-//        $produto = new Produtos($params);
+//        $produto = new Produtos();
+//        //pegando as informações do formulario
+//        $produto->nome = $request->nomeproduto;
+//        $produto->valor = $request->valor;
+//        $produto->quantidade = $request->quantidade;
+//        $produto->tamanho = $request->tamanho;
+//        $produto->descricao = $request->descricao;
 //        //salvando no BD
 //        $produto->save();
+
+        Produtos::create($request->all());
 
         //return redirect('/produtos')->withInput();
         //return ['status'=>true,"conteudos"=>$produto];
@@ -90,7 +69,7 @@ class ProdutoController extends Controller {
 
         if( isset($produto) ) {
             //pegando as informações do formulario
-            $produto->nome = $request->nomeproduto;
+            $produto->nome = $request->nome;
             $produto->valor = $request->valor;
             $produto->quantidade = $request->quantidade;
             $produto->tamanho = $request->tamanho;

@@ -16,18 +16,18 @@ class ProdutoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nomeproduto' => 'required|min:3',
+            'nome' => 'required|min:3',
             'valor' => 'required|numeric',
             'descricao' => 'required|max:255',
             'tamanho' => 'required|max:100',
-            'quantidade' => 'required|numeric',
+            'quantidade' => 'required|numeric|min:0',
         ];
     }
 
     public function messages()
     {
         return[
-            'nomeproduto.required' => 'O nome é obrigatório.',
+            'nome.required' => 'O nome é obrigatório.',
             'valor.required' => 'O valor é obrigatório.',
             'descricao.required' => 'A descriço é obrigatória.',
             'tamanho.required' => 'O tamanho é obrigatório.',
