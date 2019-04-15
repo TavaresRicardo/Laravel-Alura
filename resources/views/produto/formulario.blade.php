@@ -34,6 +34,21 @@
                 @endif
             </div>
             <div class="form-group">
+                <label> Categoria </label>
+{{--                <input name="categoria_id" class="form-control  {{ $errors->has('categoria_id') ? 'is-invalid' : '' }}" value="{{ old('categoria_id') }}"/>--}}
+                <select name="categoria_id" class="form-control"} >
+{{--{{ $errors->has('categoria_id') ? 'is-invalid' : '' }}" value="{{ old('categoria_id') }}">--}}
+                    @foreach($categorias as $c)
+                        <option value="{{ $c->id }}">{{ $c->nome }}</option>
+                    @endforeach
+                </select>
+                @if( $errors->has('categoria_id'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('categoria_id') }}
+                    </div>
+                @endif
+            </div>
+            <div class="form-group">
                 <label> Tamanho </label>
                 <input name="tamanho" class="form-control  {{ $errors->has('tamanho') ? 'is-invalid' : '' }}" value="{{ old('tamanho') }}"/>
                 @if( $errors->has('tamanho'))

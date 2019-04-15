@@ -17,6 +17,15 @@
 
             <div class="navbar-header">
                 <a class="navbar-brand" href="/produtos"> <i class="fas fa-home"></i> Estoque Laravel</a>
+
+                @if (Auth::guest())
+
+                @else
+                    <p>
+                        <b>Usuário:</b> {{ Auth::user()->name }}
+                    </p>
+                @endif
+
             </div>
 
             <ul class="nav navbar-nav navbar-right">
@@ -34,6 +43,11 @@
                     </li>
                 @else
                     <li>
+                        <a href='#'>
+                            <b>Usuário:</b> {{ Auth::user()->name }}
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{action('ProdutoController@lista')}}">
                             <i class="fas fa-list"></i> Listagem
                         </a>
@@ -44,14 +58,34 @@
                         </a>
                     </li>
                     <li>
-{{--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>--}}
-
-{{--                        <a href="/logout" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-sign-out-alt"></i> {{ Auth::user()->name }} <span class="caret"></span></a>--}}
                         <a href='/logout'>
-                            <i class="fas fa-sign-out-alt"></i> {{ Auth::user()->name }}
+                            <i class="fas fa-sign-out-alt"></i> Sair
                         </a>
                     </li>
-                 @endif
+{{--                    <li class="dropdown">--}}
+{{--                        <a href="#" class="dropdown-toggle"--}}
+{{--                           data-toggle="dropdown" role="button"--}}
+{{--                           aria-expanded="false">--}}
+{{--                            {{ Auth::user()->name }}--}}
+{{--                            <span class="caret"></span>--}}
+{{--                        </a>--}}
+{{--                        <ul class="dropdown-menu" role="menu">--}}
+{{--                                <a href="{{action('ProdutoController@lista')}}">--}}
+{{--                                    <i class="fas fa-list"></i> Listagem--}}
+{{--                                </a>--}}
+{{--                        </ul>--}}
+{{--                        <ul class="dropdown-menu" role="menu">--}}
+{{--                                <a href="{{action('ProdutoController@novo')}}">--}}
+{{--                                    <i class="fas fa-plus"></i> Novo--}}
+{{--                                </a>--}}
+{{--                        </ul>--}}
+{{--                        <ul class="dropdown-menu" role="menu">--}}
+{{--                                <a href="/auth/logout">--}}
+{{--                                    <i class="fas fa-sign-out-alt"></i>Logout--}}
+{{--                                </a>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+                @endif
             </ul>
 
         </div>

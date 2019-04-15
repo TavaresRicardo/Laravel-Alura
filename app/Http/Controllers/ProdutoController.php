@@ -1,6 +1,7 @@
 <?php namespace estoque\Http\Controllers;
 
 use estoque\Produtos;
+use estoque\Categoria;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
@@ -35,7 +36,10 @@ class ProdutoController extends Controller {
     }
 
     public function novo(){
-        return view('produto.formulario');
+        //return view('produto.formulario')->with('categorias', Categoria::all());
+        $categorias = Categoria::all();
+        dd($categorias);
+        //return view('produto.formulario', compact( 'categorias'));
     }
 
     /**
@@ -47,7 +51,7 @@ class ProdutoController extends Controller {
 
 //        $produto = new Produtos();
 //        //pegando as informações do formulario
-//        $produto->nome = $request->nomeproduto;
+//        $produto->nome = $request->nome;
 //        $produto->valor = $request->valor;
 //        $produto->quantidade = $request->quantidade;
 //        $produto->tamanho = $request->tamanho;
