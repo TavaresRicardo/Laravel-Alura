@@ -21,6 +21,7 @@ class ProdutoRequest extends FormRequest
             'descricao' => 'required|max:255',
             'tamanho' => 'required|max:100',
             'quantidade' => 'required|numeric|min:0',
+            'categoria_id' => 'required',
         ];
     }
 
@@ -32,6 +33,7 @@ class ProdutoRequest extends FormRequest
             'descricao.required' => 'A descriço é obrigatória.',
             'tamanho.required' => 'O tamanho é obrigatório.',
             'quantidade.required' => 'A quantidade é obrigatória.',
+            'categoria_id.required' => 'A categoria é obrigatória.',
         ];
     }
 }

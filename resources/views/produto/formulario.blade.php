@@ -35,9 +35,8 @@
             </div>
             <div class="form-group">
                 <label> Categoria </label>
-{{--                <input name="categoria_id" class="form-control  {{ $errors->has('categoria_id') ? 'is-invalid' : '' }}" value="{{ old('categoria_id') }}"/>--}}
-                <select name="categoria_id" class="form-control"} >
-{{--{{ $errors->has('categoria_id') ? 'is-invalid' : '' }}" value="{{ old('categoria_id') }}">--}}
+                <select name="categoria_id" class="form-control {{ $errors->has('categoria_id') ? 'is-invalid' : '' }}" value="{{ old('categoria_id') }}">
+                    <option value="" selected>Selecione uma categoria</option>
                     @foreach($categorias as $c)
                         <option value="{{ $c->id }}">{{ $c->nome }}</option>
                     @endforeach

@@ -22,7 +22,8 @@ class Produtos extends Model {
         'valor',
         'descricao',
         'quantidade',
-        'tamanho'
+        'tamanho',
+        'categoria_id'
     ];
 
 
@@ -34,7 +35,12 @@ class Produtos extends Model {
 
     protected $dateFormat = 'd-m-Y H:i';
 
-    protected $guarded = ['id'];
+    protected $guarded = ['_id'];
+
+    public function categoria(){
+        // Aqui fala que ele pertece a uma categoria
+        return $this->belongsTo('estoque\Categoria');
+    }
 
 //    Para desativar as informações de tempo:
 //    public $timestamps = false;

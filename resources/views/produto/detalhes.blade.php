@@ -14,6 +14,8 @@
                 <tr>
                     <td><b>Valor:</b> </td> <td>R$ {{ $p->valor }} </td>
                 </tr>
+                <td><b>Categoria:</b> </td> <td> {{ $p->categoria->nome }} </td>
+                </tr>
                 <tr>
                     <td> <b>Descrição:</b> </td> <td>{{ $p->descricao }} </td>
                 </tr>

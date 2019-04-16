@@ -12,22 +12,29 @@
 
         <table class="table table-striped table-bordered table-hover">
             <thead>
-                <td> ID </td>
-                <td> Nome </td>
-                <td> Descrição </td>
-                <td> Tamanho </td>
-                <td> Valor </td>
-                <td> Quantidade </td>
-                <td><i class="fas fa-search"></i></td>
-                <td><i class="fas fa-edit"></i></td>
-                <td> <i class="fas fa-trash-alt"></i></td>
+            <tr>
+                <th scope="col"> # </th>
+                <th scope="col"> Nome </th>
+                <th scope="col"> Categoria </th>
+                <th scope="col"> Descrição </th>
+                <th scope="col"> Tamanho </th>
+                <th scope="col"> Valor </th>
+                <th scope="col"> Quant. </th>
+{{--                <th scope="col"><i class="fas fa-search"></i></th>--}}
+{{--                <th scope="col"><i class="fas fa-edit"></i></th>--}}
+{{--                <th scope="col"> <i class="fas fa-trash-alt"></i></th>--}}
+                <th scope="col">Detalhes</th>
+                <th scope="col">  Editar</th>
+                <th scope="col"> Excluir</th>
             </thead>
             <tbody>
+                <?php $i = 1; ?>
                 @foreach( $produtos as $p )
-                    <tr class="{{ $p->quantidade <= 1 ? 'danger' : '' }}">
+                    <tr class="{{ $p->quantidade <= 1 ? 'table-danger' : '' }}">
 {{--                    <tr class="danger">--}}
-                        <td> {{$p->id }} </td>
+                        <th  scope="row"> {{ $i  }} </th>
                         <td> {{$p->nome }} </td>
+                        <td> {{ isset($p->categoria)? $p->categoria->nome : " " }} </td>
                         <td> {{ $p->descricao }} </td>
                         <td> {{ $p->tamanho }} </td>
                         <td> {{ $p->valor }} </td>
@@ -48,6 +55,8 @@
                             </a>
                         </td>
                     </tr>
+                    <?php $i = $i + 1; ?>
+
 
                 @endforeach
 
@@ -55,8 +64,8 @@
         </table>
 
     @endif
-    <h4>
-      <span class="label label-danger pull-right">
+    <h4 class="pull-right">
+      <span class="badge badge-danger">
         Um ou menos itens no estoque
       </span>
     </h4>

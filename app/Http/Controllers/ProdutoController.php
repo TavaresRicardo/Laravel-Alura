@@ -26,7 +26,8 @@ class ProdutoController extends Controller {
 
     public function alterar($id){
         $p = Produtos::find($id);
-        return view ('produto.alterar', compact('p'));
+        $categorias = Categoria::all();
+        return view ('produto.alterar', compact('p', 'categorias'));
     }
 
     public function remove($id){
@@ -38,8 +39,8 @@ class ProdutoController extends Controller {
     public function novo(){
         //return view('produto.formulario')->with('categorias', Categoria::all());
         $categorias = Categoria::all();
-        dd($categorias);
-        //return view('produto.formulario', compact( 'categorias'));
+        //dd($categorias);
+        return view('produto.formulario', compact( 'categorias'));
     }
 
     /**
@@ -78,6 +79,7 @@ class ProdutoController extends Controller {
             $produto->quantidade = $request->quantidade;
             $produto->tamanho = $request->tamanho;
             $produto->descricao = $request->descricao;
+            $produto->categoria_id = $request->categoria_id;
             //salvando no BD
             $produto->save();
             return redirect()->action('ProdutoController@lista')->withInput();

@@ -2,7 +2,8 @@
 
 namespace estoque;
 
-use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
 class Categoria extends Model
@@ -27,5 +28,10 @@ class Categoria extends Model
 
     protected $dateFormat = 'd-m-Y H:i';
 
-    protected $guarded = ['id'];
+    protected $guarded = ['_id'];
+
+    public function produtos(){
+        // Aqui fala que uma categoria tem vários produtos
+        return $this->hasMany('estoque\Produtos');
+    }
 }
