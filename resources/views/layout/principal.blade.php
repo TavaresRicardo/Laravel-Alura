@@ -60,7 +60,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{action('ProdutoController@novo')}}">
+                        <a href="{{action('CategoriaController@novo')}}">
                             <i class="fas fa-plus"></i> Nova categoria
                         </a>
                     </li>

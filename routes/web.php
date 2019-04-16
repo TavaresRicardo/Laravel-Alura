@@ -23,6 +23,14 @@ Route::get('/produtos/json2', 'ProdutoController@listaJson2')->middleware('autor
 Route::get('/produtos/remove/{id}', 'ProdutoController@remove' )->middleware('autorizador');
 
 
+Route::get('/categorias', 'CategoriaController@lista' )->middleware('autorizador');
+Route::get('/categorias/mostra/{id}', 'CategoriaController@mostra' )->middleware('autorizador');
+Route::get('/categorias/alterar/{id}', 'CategoriaController@alterar' )->middleware('autorizador');
+Route::post('/categorias/alterar/{id}', 'CategoriaController@update' )->middleware('autorizador');
+Route::get('/categorias/novo', 'CategoriaController@novo' )->middleware('autorizador');
+Route::post('/categorias/adiciona', 'CategoriaController@adiciona' )->middleware('autorizador');
+Route::get('/categorias/remove/{id}', 'CategoriaController@remove' )->middleware('autorizador');
+
 Route::get('/login', 'Auth\LoginController@form');
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::post('/login', 'Auth\LoginController@login');

@@ -34,6 +34,16 @@
                 @endif
             </div>
 
+{{--            <div class="form-group">--}}
+{{--                <label> Categoria </label>--}}
+{{--                <select name="categoria_id" class="form-control" >--}}
+
+{{--                    @foreach($categorias as $c)--}}
+{{--                        <option value="{{ $c->id }}">{{ $c->nome }}</option>--}}
+{{--                    @endforeach--}}
+{{--                </select>--}}
+{{--            </div>--}}
+
             <div class="form-group">
                 <label> Categoria </label>
                 <select name="categoria_id" class="form-control  {{ $errors->has('categoria_id') ? 'is-invalid' : '' }}" value="{{ $p->categoria_id }}">
