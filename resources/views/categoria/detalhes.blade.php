@@ -15,6 +15,8 @@
                     <td><b>Categoria:</b> </td> <td> {{ $c->nome }} </td>
                 </tr>
 
+
+
             </tbody>
         </table>
 
